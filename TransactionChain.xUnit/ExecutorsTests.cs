@@ -1,6 +1,6 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using TransactionChain;
 
 using Xunit;
 
@@ -28,7 +28,7 @@ namespace TransactionChain.xUnit
             Assert.Equal(16, result);
             try
             {
-                await executor.RollbackAsync(new System.Exception("Soemthing exceptional happened")); // rolls back all operations performed above
+                await executor.RollbackAsync(new InvalidOperationException("Something exceptional happened")); // rolls back all operations performed above
             }
             catch (TransactionChainException tcex)
             {
